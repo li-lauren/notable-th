@@ -5,6 +5,32 @@ from model import db, connect_to_db, Doctor, Appointment, Patient
 import os
 import requests
 
+def create_doc(fname, lname):
+    """Register a doctor."""
+
+    new_doc = Doctor(
+        fname = fname,
+        lname = lname
+    )
+
+    db.session.add(new_doc)
+    db.session.commit()
+
+    return new_doc
+
+def create_patient(fname, lname):
+    """Register a patient."""
+
+    new_pat = Patient(
+        fname = fname,
+        lname = lname
+    )
+
+    db.session.add(new_pat)
+    db.session.commit()
+
+    return new_pat
+
 def get_doctors():
     """Return all doctors."""
 
@@ -14,7 +40,7 @@ def get_apts_by_doc_day(doc_id, day):
     """Return a list of all appointments for a particular doctor and particular day."""
 
     apts = Appointment.query.\
-        filter(Appointment.doc_id == doc_id, Appointment.date_time.day == day).all()
+        filter(Appointment.doc_id == doc_id, Appointment.date_time.datetime.date() == day).all()
 
     return apts
 
@@ -26,14 +52,17 @@ def delete_apt(apt_id):
     db.session.delete(apt)
     db.session.commit()
 
+    return "Appointment deleted"
 
-def create_apt(doc_id, pat_id, date_time, kind):
+
+def create_apt(doc_id, pat_id, date, time, kind):
     """Create an appointment."""
 
     new_apt = Appointment(
         doc_id = doc_id,
         pat_id = pat_id,
-        date_time = date_time,
+        date = date,
+        time = time,
         kind=kind
     )
 

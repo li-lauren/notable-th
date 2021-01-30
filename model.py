@@ -51,7 +51,8 @@ class Appointment(db.Model):
     apt_id: int
     doc_id: int
     pat_id: int
-    date_time: datetime
+    date: str
+    time: str
     kind: str
 
     __tablename__ = "appointments"
@@ -61,7 +62,8 @@ class Appointment(db.Model):
                         primary_key=True)
     doc_id = db.Column(db.Integer, db.ForeignKey('doctors.doc_id'))
     pat_id = db.Column(db.Integer, db.ForeignKey('patients.pat_id'))
-    date_time = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.String, nullable=False)
+    time = db.Column(db.String, nullable=False)
     kind = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
