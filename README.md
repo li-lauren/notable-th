@@ -13,4 +13,6 @@ and time in "HH:MMAM"/"HH:MMPM" format)
 - write unit tests (so far I only did some very basic testing with Postman) and 
 overall do a lot more testing
 
+Side Note: you can start the server by running python3 server.py.
+
 Thanks for your time!
