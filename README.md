@@ -13,6 +13,10 @@ and time in "HH:MMAM"/"HH:MMPM" format)
 - write unit tests (so far I only did some very basic testing with Postman) and 
 overall do a lot more testing
 
-Side Note: you can start the server by running python3 server.py.
+Instructions:
+1.  Download required packages listed in requirements.txt.
+2.  Create a PostGreSQL database ("createdb notable_db")
+3.  If you would, you can run python3 seed.py to seed the database with some initial data.
+4.  Start the server by running python3 server.py.
 
 Thanks for your time!
